@@ -50,9 +50,7 @@ const data = [
         firstName: "Bob",
         lastName: "Brown",
         age: 25,
-        subRows: [
-          { id: 3, firstName: "Charlie", lastName: "Davis", age: 35 },
-        ],
+        subRows: [{ id: 3, firstName: "Charlie", lastName: "Davis", age: 35 }],
       },
     ],
   },
@@ -71,7 +69,7 @@ const data = [
     firstName: "tests",
     lastName: "sample",
     age: 49,
-  }
+  },
 ];
 
 const TableExpand = () => {
@@ -95,7 +93,10 @@ const TableExpand = () => {
             <tr key={headerGroup.id}>
               {headerGroup.headers.map((header) => (
                 <th key={header.id} className="border p-2">
-                  {flexRender(header.column.columnDef.header, header.getContext())}
+                  {flexRender(
+                    header.column.columnDef.header,
+                    header.getContext()
+                  )}
                 </th>
               ))}
             </tr>

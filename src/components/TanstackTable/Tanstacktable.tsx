@@ -48,36 +48,46 @@ const Tanstacktable = () => {
 
   return (
     <>
-    {products.length > 0 ?
-      <table className="table-auto w-full border border-gray-300">
-        <thead>
-          {table.getHeaderGroups().map((headerGroup, index) => (
-            <tr key={"headertr" + index} className="bg-gray-100">
-              {headerGroup.headers.map((header, index2) => (
-                <th key={"headertd" + index2} className="p-2 border text-left">
-                  {flexRender(
-                    header.column.columnDef.header,
-                    header.getContext()
-                  )}
-                </th>
-              ))}
-            </tr>
-          ))}
-        </thead>
-        <tbody>
-          {table.getRowModel().rows.map((row, index) => (
-            <tr key={"tablebodytr" + index} className="border hover:bg-gray-50">
-              {row.getVisibleCells().map((cell, index2) => (
-                <td key={"tablebodytd" + index + index2} className="p-2 border">
-                  {flexRender(cell.column.columnDef.cell, cell.getContext())}
-                </td>
-              ))}
-            </tr>
-          ))}
-        </tbody>
-      </table>
-      :
-      <p>No Records found</p>}
+      {products.length > 0 ? (
+        <table className="table-auto w-full border border-gray-300">
+          <thead>
+            {table.getHeaderGroups().map((headerGroup, index) => (
+              <tr key={"headertr" + index} className="bg-gray-100">
+                {headerGroup.headers.map((header, index2) => (
+                  <th
+                    key={"headertd" + index2}
+                    className="p-2 border text-left"
+                  >
+                    {flexRender(
+                      header.column.columnDef.header,
+                      header.getContext()
+                    )}
+                  </th>
+                ))}
+              </tr>
+            ))}
+          </thead>
+          <tbody>
+            {table.getRowModel().rows.map((row, index) => (
+              <tr
+                key={"tablebodytr" + index}
+                className="border hover:bg-gray-50"
+              >
+                {row.getVisibleCells().map((cell, index2) => (
+                  <td
+                    key={"tablebodytd" + index + index2}
+                    className="p-2 border"
+                  >
+                    {flexRender(cell.column.columnDef.cell, cell.getContext())}
+                  </td>
+                ))}
+              </tr>
+            ))}
+          </tbody>
+        </table>
+      ) : (
+        <p>No Records found</p>
+      )}
     </>
   );
 };

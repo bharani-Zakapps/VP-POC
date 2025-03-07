@@ -83,7 +83,7 @@ const ProductTable = () => {
       columns={productColumns}
       enableSorting
       enableFiltering
-    //   meta={{ priceChange }}
+      //   meta={{ priceChange }}
     />
   );
 };

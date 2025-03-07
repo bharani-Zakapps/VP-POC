@@ -13,7 +13,7 @@ const ListProduct = () => {
         <AccordionItem value="item-1">
           <AccordionTrigger>Show Table</AccordionTrigger>
           <AccordionContent>
-            <Tanstacktable/>
+            <Tanstacktable />
           </AccordionContent>
         </AccordionItem>
       </Accordion>

@@ -26,7 +26,7 @@ const columns: ColumnDef<{ id: number; name: string; age: number }>[] = [
     accessorKey: "name",
     header: "Name",
     enableSorting: true, // Sorting enabled
-    sortingFn:"alphanumeric"
+    sortingFn: "alphanumeric",
   },
   {
     accessorKey: "age",
@@ -46,7 +46,7 @@ const SortingTable = () => {
     state: { sorting },
     onSortingChange: setSorting, // Updates sorting state
     // sortingMode: "multi", // Prevents removing sorting after two clicks,
-    enableSortingRemoval:false
+    enableSortingRemoval: false,
   });
 
   return (
@@ -55,11 +55,20 @@ const SortingTable = () => {
         {table.getHeaderGroups().map((headerGroup) => (
           <tr key={headerGroup.id} className="flex flex-row justify-evenly">
             {headerGroup.headers.map((header) => (
-              <th key={header.id} className={header.column.getCanSort()? "cursor-pointer !flex" :""} onClick={header.column.getToggleSortingHandler()}>
-                {flexRender(header.column.columnDef.header, header.getContext())}{" "}
+              <th
+                key={header.id}
+                className={
+                  header.column.getCanSort() ? "cursor-pointer !flex" : ""
+                }
+                onClick={header.column.getToggleSortingHandler()}
+              >
+                {flexRender(
+                  header.column.columnDef.header,
+                  header.getContext()
+                )}{" "}
                 {/* {header.column.getIsSorted() === "asc" ? "🔼" : header.column.getIsSorted() === "desc" ? "🔽" : ""}
                  */}
-                 {header.column.getCanSort()? <ArrowUpDown /> : ""}
+                {header.column.getCanSort() ? <ArrowUpDown /> : ""}
               </th>
             ))}
           </tr>
@@ -69,7 +78,9 @@ const SortingTable = () => {
         {table.getRowModel().rows.map((row) => (
           <tr key={row.id} className="flex flex-row justify-evenly p-2">
             {row.getVisibleCells().map((cell) => (
-              <td key={cell.id}>{flexRender(cell.column.columnDef.cell, cell.getContext())}</td>
+              <td key={cell.id}>
+                {flexRender(cell.column.columnDef.cell, cell.getContext())}
+              </td>
             ))}
           </tr>
         ))}

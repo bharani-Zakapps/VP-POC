@@ -15,7 +15,7 @@ const Trail = () => {
   const { data, refetch } = useQuery({
     queryKey: ["albumData"],
     queryFn: fetchDlist,
-    initialData: []
+    initialData: [],
   });
 
   const addData = () => {
@@ -28,18 +28,24 @@ const Trail = () => {
     //   },
     // ]);
     queryClient.setQueryData(["albumData"], (prevData: any) => {
-     return alterData(prevData)
+      return alterData(prevData);
     });
   };
 
-  const alterData = (value:any) =>{
-    return value.map((item:any)=> item.userId === 1 ? {...item,title:"Test Samples"} : item)
-  }
+  const alterData = (value: any) => {
+    return value.map((item: any) =>
+      item.userId === 1 ? { ...item, title: "Test Samples" } : item
+    );
+  };
   console.log(data, "data");
   return (
     <>
-      <Button variant={"danger"} onClick={() => addData()}>Alter</Button>
-      <Button variant={"success"} onClick={() => refetch()}>refetch</Button>
+      <Button variant={"danger"} onClick={() => addData()}>
+        Alter
+      </Button>
+      <Button variant={"success"} onClick={() => refetch()}>
+        refetch
+      </Button>
       <TableComp />
     </>
   );

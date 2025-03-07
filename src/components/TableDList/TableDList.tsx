@@ -60,7 +60,7 @@ const DList = () => {
   const { data, isLoading, error } = useQuery({
     queryKey: ["Dlist"],
     queryFn: fetchDlist,
-    refetchOnWindowFocus: false
+    refetchOnWindowFocus: false,
   });
 
   // useEffect(() => {
@@ -112,7 +112,7 @@ const DList = () => {
   const columns: ColumnDef<IDlist>[] = [
     {
       id: "select",
-      header: ({  }) => (
+      header: ({}) => (
         <Checkbox
           ref={checkboxRef}
           checked={allData.every((item) => item.completed)}

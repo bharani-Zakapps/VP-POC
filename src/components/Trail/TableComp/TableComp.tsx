@@ -1,61 +1,63 @@
-
 import { ArrowUpDown } from "lucide-react";
 import { useState } from "react";
 import {
-    ColumnDef,
-    useReactTable,
-    getCoreRowModel,
-    flexRender,
-    SortingState,
-    getSortedRowModel,
-  } from "@tanstack/react-table";
+  ColumnDef,
+  useReactTable,
+  getCoreRowModel,
+  flexRender,
+  SortingState,
+  getSortedRowModel,
+} from "@tanstack/react-table";
 import { useIsFetching, useQueryClient } from "@tanstack/react-query";
 
 type IDlist = {
-    userId: number;
-    id?: number;
-    title: string;
-  };
-
+  userId: number;
+  id?: number;
+  title: string;
+};
 
 const TableComp = () => {
-    const queryClient = useQueryClient();
-    const [sorting, setSorting] = useState<SortingState>([]);
-    const qData:IDlist[] | undefined = queryClient.getQueryData(['albumData']);
-    const isFetching = useIsFetching({ queryKey: ["albumData"] })
+  const queryClient = useQueryClient();
+  const [sorting, setSorting] = useState<SortingState>([]);
+  const qData: IDlist[] | undefined = queryClient.getQueryData(["albumData"]);
+  const isFetching = useIsFetching({ queryKey: ["albumData"] });
 
-    const columns: ColumnDef<IDlist>[] = [
-        {
-          accessorKey: "id",
-          header: "Id",
-          enableSorting:true
-        },
-        {
-          accessorKey: "userId",
-          header: "User Id",
-          enableSorting: false,
-        },
-        {
-          accessorKey: "title",
-          header: "Title",
-          enableSorting:false
-        }
-      ];
+  const columns: ColumnDef<IDlist>[] = [
+    {
+      accessorKey: "id",
+      header: "Id",
+      enableSorting: true,
+    },
+    {
+      accessorKey: "userId",
+      header: "User Id",
+      enableSorting: false,
+    },
+    {
+      accessorKey: "title",
+      header: "Title",
+      enableSorting: false,
+    },
+  ];
 
-    const table = useReactTable({
-        data: qData || [],
-        columns,
-        state:{
-            sorting
-        },
-        getCoreRowModel: getCoreRowModel(),
-        getSortedRowModel:getSortedRowModel(),
-        onSortingChange:setSorting
-    })
-    
-    if(isFetching){
-        return (<><p>Loading....</p></>)
-    }
+  const table = useReactTable({
+    data: qData || [],
+    columns,
+    state: {
+      sorting,
+    },
+    getCoreRowModel: getCoreRowModel(),
+    getSortedRowModel: getSortedRowModel(),
+    onSortingChange: setSorting,
+  });
+
+  if (isFetching) {
+    return (
+      <>
+        <p>Loading....</p>
+      </>
+    );
+  }
 
   return (
     <div className="overflow-y-scroll max-h-[300px]">

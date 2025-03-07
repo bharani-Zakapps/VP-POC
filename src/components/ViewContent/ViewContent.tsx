@@ -24,19 +24,19 @@ const ViewContent = () => {
           <ListProduct />
         </TabsContent>
         <TabsContent value="second">
-            <DList/>
+          <DList />
         </TabsContent>
         <TabsContent value="third">
-          <TableExpand/>
+          <TableExpand />
         </TabsContent>
         <TabsContent value="four">
-          <SortingTable/>
+          <SortingTable />
         </TabsContent>
         <TabsContent value="five">
-          <Trail/>
+          <Trail />
         </TabsContent>
         <TabsContent value="six">
-          <UserTable/>
+          <UserTable />
         </TabsContent>
       </Tabs>
     </>
