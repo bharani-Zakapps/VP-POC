@@ -1,4 +1,5 @@
 import AddProductComp from "../AddProduct/AddProductComp";
+import Dummyp from "../dummy/Dummyp";
 import ListProduct from "../ListProduct/ListProduct";
 import UserTable from "../ReUseTable/ReuseTable";
 import SortingTable from "../SortingTable/SortingTable";
@@ -18,6 +19,7 @@ const ViewContent = () => {
           <TabsTrigger value="four">Table using Sorting</TabsTrigger>
           <TabsTrigger value="five">Trial</TabsTrigger>
           <TabsTrigger value="six">Reuse Table</TabsTrigger>
+          <TabsTrigger value="seven">Dummy</TabsTrigger>
         </TabsList>
         <TabsContent value="first">
           <AddProductComp />
@@ -37,6 +39,9 @@ const ViewContent = () => {
         </TabsContent>
         <TabsContent value="six">
           <UserTable />
+        </TabsContent>
+        <TabsContent value="seven">
+          <Dummyp/>
         </TabsContent>
       </Tabs>
     </>
